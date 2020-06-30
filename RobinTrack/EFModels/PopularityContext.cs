@@ -13,6 +13,11 @@ namespace RobinTrack
 
         }
 
+        public PopularityContext()
+        {
+
+        }
+
         public DbSet<PopularityEf> Popularity { get; set; }
         public DbSet<PopularityStockVolumeEf> PopularStock { get; set; }
     }

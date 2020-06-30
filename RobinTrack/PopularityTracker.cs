@@ -36,7 +36,7 @@ namespace RobinTrack
             List<string> symbols = new List<string>();
             using (var client = new HttpClient())
             {
-                var url = new Uri("https://robintrack.net/api/largest_popularity_changes?hours_ago=72&limit=1&percentage=false&min_popularity=50&start_index=0");
+                var url = new Uri("https://robintrack.net/api/largest_popularity_changes?hours_ago=72&limit=50&percentage=false&min_popularity=50&start_index=0");
                 var response = await client.GetAsync(url);
                 string json;
                 using (var content = response.Content)
