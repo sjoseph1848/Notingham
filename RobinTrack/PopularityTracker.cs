@@ -9,6 +9,10 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Collections.Generic;
+using System.Configuration;
+using RobinTrack.DTO;
+using System.Linq;
+using RobinTrack.EFModels;
 
 namespace RobinTrack
 {
@@ -16,10 +20,11 @@ namespace RobinTrack
     {
         private const string Route = "popularity";
         private readonly PopularityContext _popularityContext;
-
-        public PopularityTracker(PopularityContext popularityContext)
+        private readonly HttpClient _httpClient;
+        public PopularityTracker(PopularityContext popularityContext, HttpClient httpClient)
         {
             _popularityContext = popularityContext;
+            _httpClient = httpClient;
         }
 
         [FunctionName("AddPopularity")]
@@ -28,7 +33,7 @@ namespace RobinTrack
             ILogger log)
         {
             log.LogInformation("Getting the popularity info");
-
+            List<string> symbols = new List<string>();
             using (var client = new HttpClient())
             {
                 var url = new Uri("https://robintrack.net/api/largest_popularity_changes?hours_ago=72&limit=1&percentage=false&min_popularity=50&start_index=0");
@@ -49,21 +54,20 @@ namespace RobinTrack
                     popularStock.Name = stock.Name;
                     popularStock.Symbol = stock.Symbol;
                     popularStock.CreatedTime = DateTime.Now;
-
-                    GetStockInfo(popularStock.Symbol);
+ 
                     _popularityContext.Popularity.Add(popularStock);
                     await _popularityContext.SaveChangesAsync();
+                    symbols.Add(popularStock.Symbol);
+                   
                 }
+
                
+
                 return new OkObjectResult(stocks);
             }
            
         }
 
-
-        public static void GetStockInfo(string symbol)
-        {
-
-        }
+        
     }
 }

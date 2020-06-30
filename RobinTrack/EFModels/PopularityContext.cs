@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RobinTrack.EFModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,5 +14,6 @@ namespace RobinTrack
         }
 
         public DbSet<PopularityEf> Popularity { get; set; }
+        public DbSet<PopularityStockVolumeEf> PopularStock { get; set; }
     }
 }
