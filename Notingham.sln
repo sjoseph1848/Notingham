@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notingham.API", "Notingham.API\Notingham.API.csproj", "{60E205DE-17CD-4AED-A50A-98EE72E6472F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobinTrack", "RobinTrack\RobinTrack.csproj", "{63235011-9137-4CD4-A886-883BE7A6219C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60E205DE-17CD-4AED-A50A-98EE72E6472F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60E205DE-17CD-4AED-A50A-98EE72E6472F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60E205DE-17CD-4AED-A50A-98EE72E6472F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60E205DE-17CD-4AED-A50A-98EE72E6472F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63235011-9137-4CD4-A886-883BE7A6219C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63235011-9137-4CD4-A886-883BE7A6219C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63235011-9137-4CD4-A886-883BE7A6219C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63235011-9137-4CD4-A886-883BE7A6219C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27C1C411-7D75-4626-B9A8-25F37917C8AD}
+	EndGlobalSection
+EndGlobal
