@@ -17,13 +17,14 @@ namespace RobinTrack
 {
    
     
-    public class TimeTest
+    public class TimedPopularity
     {
 
         [FunctionName("TimeTest")]
-        public static void Run([TimerTrigger("0 */1 * * * *")]TimerInfo myTimer, ILogger log)
+        public static void Run([TimerTrigger("0 0 13-21 * 1-5")]TimerInfo myTimer, ILogger log)
         {
-            var client = new RestClient("http://localhost:7071/api/popularity");
+            var test = Environment.GetEnvironmentVariable("PopularityKey");
+            var client = new RestClient($"https://robintrack20200630195915.azurewebsites.net/api/popularity?code={test}");
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
