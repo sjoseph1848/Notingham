@@ -19,7 +19,7 @@ namespace RobinTrack
     
     public class TimedPopularity
     {
-        private const string Route = "popularity";
+
         private readonly PopularityContext _popularityContext;
         private readonly HttpClient _httpClient;
         public TimedPopularity(PopularityContext popularityContext, HttpClient httpClient)
@@ -28,7 +28,7 @@ namespace RobinTrack
             _httpClient = httpClient;
         }
 
-        [FunctionName("TimeTest")]
+        [FunctionName("StockPopularity")]
         public async Task Run([TimerTrigger("0 0 13-21 * * 1-5")] TimerInfo myTimer, ILogger log)
         {
             await AddPopularity();
