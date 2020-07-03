@@ -25,7 +25,7 @@ namespace RobinTrack
         }
 
         [FunctionName("StockVolume")]
-        public async Task Run([TimerTrigger("0 30 16 * * 1-5")] TimerInfo myTimer, ILogger log)
+        public async Task Run([TimerTrigger("0 30 22 * * 1-5")] TimerInfo myTimer, ILogger log)
         //public async Task Run([TimerTrigger("0 0 13-21 * * 1-5")] TimerInfo myTimer, ILogger log)
         {
             await AddVolume();

@@ -29,7 +29,7 @@ namespace RobinTrack
         }
 
         [FunctionName("StockPopularity")]
-        public async Task Run([TimerTrigger("0 0 13-21 * * 1-5")] TimerInfo myTimer, ILogger log)
+        public async Task Run([TimerTrigger("0 0 14-21 * * 1-5")] TimerInfo myTimer, ILogger log)
         {
             await AddPopularity();
 
