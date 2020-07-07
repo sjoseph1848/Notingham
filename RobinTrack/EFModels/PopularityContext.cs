@@ -20,5 +20,6 @@ namespace RobinTrack
 
         public DbSet<PopularityEf> Popularity { get; set; }
         public DbSet<PopularityStockVolumeEf> PopularStock { get; set; }
+        public DbSet<StockProfileEF> StockProfile { get; set; }
     }
 }

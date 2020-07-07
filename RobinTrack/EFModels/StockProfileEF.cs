@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,8 +17,12 @@ namespace RobinTrack.EFModels
 
         public long MarketCap { get; set; }
         public decimal LastDividend { get; set; }
-        public string Range { get; set; }
-        public decimal Changes { get; set; }
+
+        [JsonProperty(PropertyName = "range")]
+        public string PriceRange { get; set; }
+
+        [JsonProperty(PropertyName = "changes")]
+        public decimal PriceChanges { get; set; }
         public string CompanyName { get; set; }
 
         public string Exchange { get; set; }
@@ -30,16 +35,14 @@ namespace RobinTrack.EFModels
         public string Sector { get; set; }
         public string Country { get; set; }
         public string FullTimeEmployees { get; set; }
-        public string Phone { get; set; }
-        public string Address { get; set; }
 
-        public string City { get; set; }
+        public double? DcDiff { get; set; }
+        public double? DCF { get; set; }
 
-        public string State { get; set; }
-        public string Zip { get; set; }
+        [JsonProperty(PropertyName = "image")]
+        public string CompanyImage { get; set; }
 
-        public decimal DcDiff { get; set; }
-        public string Image { get; set; }
+        public DateTime CreatedTime { get; set; } = DateTime.Now;
 
     }
 }
