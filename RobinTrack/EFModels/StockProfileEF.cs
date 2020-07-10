@@ -11,18 +11,19 @@ namespace RobinTrack.EFModels
         public string Symbol { get; set; }
         public decimal Price { get; set; }
 
-        public decimal Beta { get; set; }
+        public decimal? Beta { get; set; }
 
-        public long VolumeAvg { get; set; }
+        [JsonProperty(PropertyName ="volAvg")]
+        public int VolumeAvg { get; set; }
 
+        [JsonProperty(PropertyName ="mktCap")]
         public long MarketCap { get; set; }
-        public decimal LastDividend { get; set; }
+
+        [JsonProperty(PropertyName = "lastDiv")]
+        public decimal? LastDividend { get; set; }
 
         [JsonProperty(PropertyName = "range")]
         public string PriceRange { get; set; }
-
-        [JsonProperty(PropertyName = "changes")]
-        public decimal PriceChanges { get; set; }
         public string CompanyName { get; set; }
 
         public string Exchange { get; set; }
@@ -35,9 +36,6 @@ namespace RobinTrack.EFModels
         public string Sector { get; set; }
         public string Country { get; set; }
         public string FullTimeEmployees { get; set; }
-
-        public double? DcDiff { get; set; }
-        public double? DCF { get; set; }
 
         [JsonProperty(PropertyName = "image")]
         public string CompanyImage { get; set; }

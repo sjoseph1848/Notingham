@@ -50,39 +50,36 @@ namespace RobinTrack
                     }
                     if (json.Length != 0)
                     {
-                        IEnumerable<StockProfileEF> stocks = JsonConvert.DeserializeObject<StockProfileEF[]>(json).Take(5);
-                        //IEnumerable<Popu> stocks = JsonConvert.DeserializeObject<StockVolumeDto[]>(json).Take(10);
+
+                        IEnumerable<StockProfileEF> stocks = JsonConvert.DeserializeObject<StockProfileEF[]>(json);
                         foreach (var stock in stocks)
                         {
-                            var stockProfile = new StockProfileEF();
-                            stockProfile.Symbol = stock.Symbol;
-                            stockProfile.Price = stock.Price;
-                            stockProfile.Beta = stock.Beta;
-                            stockProfile.VolumeAvg = stock.VolumeAvg;
-                            stockProfile.MarketCap = stock.MarketCap;
-                            stockProfile.LastDividend = stock.LastDividend;
-                            stockProfile.PriceRange = stock.PriceRange;
-                            stockProfile.PriceChanges = stock.PriceChanges;
-                            stockProfile.CompanyName = stock.CompanyName;
-                            stockProfile.Exchange = stock.Exchange;
-                            stockProfile.ExchangeShortName = stock.ExchangeShortName;
-                            stockProfile.Industry = stock.Industry;
-                            stockProfile.Website = stock.Website;
-                            stockProfile.Description = stock.Description;
-                            stockProfile.CEO = stock.CEO;
-                            stockProfile.Sector = stock.Sector;
-                            stockProfile.Country = stock.Country;
-                            stockProfile.FullTimeEmployees = stock.FullTimeEmployees;
-                            stockProfile.DcDiff = stock.DcDiff;
-                            stockProfile.DCF = stock.DCF;
-                            stockProfile.CompanyImage = stock.CompanyImage;
+                 
+                                var stockProfile = new StockProfileEF();
+                                stockProfile.Symbol = stock.Symbol;
+                                stockProfile.Price = Math.Round(stock.Price, 2);
+                                stockProfile.Beta = stock.Beta;
+                                stockProfile.VolumeAvg = stock.VolumeAvg;
+                                stockProfile.MarketCap = stock.MarketCap;
+                                stockProfile.LastDividend = stock.LastDividend;
+                                stockProfile.PriceRange = stock.PriceRange;
+                                stockProfile.CompanyName = stock.CompanyName;
+                                stockProfile.Exchange = stock.Exchange;
+                                stockProfile.ExchangeShortName = stock.ExchangeShortName;
+                                stockProfile.Industry = stock.Industry;
+                                stockProfile.Website = stock.Website;
+                                stockProfile.Description = stock.Description;
+                                stockProfile.CEO = stock.CEO;
+                                stockProfile.Sector = stock.Sector;
+                                stockProfile.Country = stock.Country;
+                                stockProfile.FullTimeEmployees = stock.FullTimeEmployees;
+                                stockProfile.CompanyImage = stock.CompanyImage;
 
-                            _popularityContext.StockProfile.Add(stockProfile);
-                            await _popularityContext.SaveChangesAsync();
+                                _popularityContext.StockProfile.Add(stockProfile);
+                                await _popularityContext.SaveChangesAsync();
 
-
-                            }
                         }
+                    }
                     }
                 }
 
