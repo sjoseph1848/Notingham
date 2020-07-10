@@ -33,11 +33,13 @@ namespace RobinTrack
             ILogger log)
         {
             var lstsymbols = _popularityContext.PopularStock.Select(s => s.Symbol).Distinct().ToList();
-
+            var lstprofile = _popularityContext.StockProfile.ToList();
             var test = Environment.GetEnvironmentVariable("FinancialModellingApiKey");
             var num = 0;
+            
             foreach (var symbol in lstsymbols)
             {
+
                 using (var client = new HttpClient())
                 {
                     var url = new Uri($"https://financialmodelingprep.com/api/v3/profile/{symbol}?apikey={test}");
@@ -52,9 +54,11 @@ namespace RobinTrack
                     {
 
                         IEnumerable<StockProfileEF> stocks = JsonConvert.DeserializeObject<StockProfileEF[]>(json);
+
                         foreach (var stock in stocks)
                         {
-                 
+                            if(lstprofile.Where(s => s.Symbol == stock.Symbol).Count() == 0)
+                            {
                                 var stockProfile = new StockProfileEF();
                                 stockProfile.Symbol = stock.Symbol;
                                 stockProfile.Price = Math.Round(stock.Price, 2);
@@ -77,7 +81,7 @@ namespace RobinTrack
 
                                 _popularityContext.StockProfile.Add(stockProfile);
                                 await _popularityContext.SaveChangesAsync();
-
+                            }              
                         }
                     }
                     }
