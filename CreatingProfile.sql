@@ -35,7 +35,10 @@ ALTER TABLE dbo.StockProfile ALTER COLUMN companyName NVARCHAR(200) NULL
 
 ALTER TABLE dbo.StockProfile ALTER COLUMN price decimal(8,2) NOT NULL
 ALTER TABLE dbo.Popularity ALTER COLUMN Name NVARCHAR(max) NOT NULL
-ALTER TABLE dbo.StockProfile ALTER COLUMN lastDividend decimal(3,3) NULL
+ALTER TABLE dbo.StockProfile 
+	ADD lastDividend decimal(6,3) NULL
+ALTER TABLE dbo.StockProfile
+	ADD Beta decimal(8,6) NULL
 ALTER TABLE dbo.StockProfile ALTER COLUMN marketCap bigint NOT NULL
 ALTER TABLE dbo.StockProfile ALTER COLUMN priceChanges decimal(5,2) NULL
 ALTER TABLE dbo.StockProfile ALTER COLUMN dcdiff decimal(5,2) NULL

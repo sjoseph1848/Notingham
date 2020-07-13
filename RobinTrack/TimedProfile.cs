@@ -26,11 +26,15 @@ namespace RobinTrack
             _httpClient = httpClient;
         }
 
-
         [FunctionName("TimedProfile")]
-        public async Task Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
-            ILogger log)
+        public async Task Run([TimerTrigger("0 30 23 * * 1-5")] TimerInfo myTimer, ILogger log)
+        {
+            await AddProfile();
+
+        }
+
+        
+        public async Task AddProfile()
         {
             var lstsymbols = _popularityContext.PopularStock.Select(s => s.Symbol).Distinct().ToList();
             var lstprofile = _popularityContext.StockProfile.ToList();

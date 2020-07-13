@@ -26,7 +26,6 @@ namespace RobinTrack
 
         [FunctionName("StockVolume")]
         public async Task Run([TimerTrigger("0 30 22 * * 1-5")] TimerInfo myTimer, ILogger log)
-        //public async Task Run([TimerTrigger("0 0 13-21 * * 1-5")] TimerInfo myTimer, ILogger log)
         {
             await AddVolume();
 
@@ -54,20 +53,17 @@ namespace RobinTrack
                         IEnumerable<StockVolumeDto> stocks = JsonConvert.DeserializeObject<StockVolumeDto[]>(json).Take(10);
                         foreach (var stock in stocks)
                         {
-
-                            if(stock.Open < 15.0f)
-                            {
-                                var popularStockVolume = new PopularityStockVolumeEf();
-                                popularStockVolume.Date = stock.Date;
-                                popularStockVolume.Open = stock.Open;
-                                popularStockVolume.Close = stock.Close;
-                                popularStockVolume.High = stock.High;
-                                popularStockVolume.Low = stock.Low;
-                                popularStockVolume.Symbol = symbol;
-                                popularStockVolume.Volume = stock.Volume;
-                                _popularityContext.PopularStock.Add(popularStockVolume);
-                                await _popularityContext.SaveChangesAsync();
-                            }
+                            var popularStockVolume = new PopularityStockVolumeEf();
+                            popularStockVolume.Date = stock.Date;
+                            popularStockVolume.Open = stock.Open;
+                            popularStockVolume.Close = stock.Close;
+                            popularStockVolume.High = stock.High;
+                            popularStockVolume.Low = stock.Low;
+                            popularStockVolume.Symbol = symbol;
+                            popularStockVolume.Volume = stock.Volume;
+                            _popularityContext.PopularStock.Add(popularStockVolume);
+                            await _popularityContext.SaveChangesAsync();
+                        
                         }
                     }
                 }
