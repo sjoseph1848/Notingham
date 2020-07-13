@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Notingham.API.DbContexts;
 
 namespace Notingham.API
 {
@@ -42,7 +43,7 @@ namespace Notingham.API
                 });
 
             // Add DbContext
-            services.AddDbContext<>(options =>
+            services.AddDbContext<NotinghamContext>(options =>
                 options.UseSqlServer(
                     _config.GetConnectionString("DefaultConnection")));
         }
