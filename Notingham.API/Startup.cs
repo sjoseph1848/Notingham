@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Notingham.API.DbContexts;
+using Notingham.API.Services;
 
 namespace Notingham.API
 {
@@ -33,7 +35,12 @@ namespace Notingham.API
         {
             services.AddControllers();
 
-            services.AddHttpClient(name: "FinancialModelService",
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddScoped<IInvestmentManagerStockRepository, InvestmentManagerStockRepository>();
+            services.AddScoped<InvestmentManagerCalls>();
+
+            services.AddHttpClient(name: "FinskeyService",
                 configureClient: options =>
                 {
                     options.BaseAddress = new Uri("https://financialmodelingprep.com/api/v3/");

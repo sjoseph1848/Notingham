@@ -15,8 +15,6 @@ using RobinTrack.EFModels;
 
 namespace RobinTrack
 {
-   
-    
     public class TimedPopularity
     {
 
