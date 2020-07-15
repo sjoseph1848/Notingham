@@ -37,7 +37,7 @@ namespace Notingham.API
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddScoped<IInvestmentManagerStockRepository, InvestmentManagerStockRepository>();
+            services.AddScoped<IInvestmentManagerRepository, InvestmentManagerRepository>();
             services.AddScoped<InvestmentManagerCalls>();
 
             services.AddHttpClient(name: "FinskeyService",

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Notingham.API.Services
 {
-    public interface IInvestmentManagerStockRepository
+    public interface IInvestmentManagerRepository
     {
         void AddInvestmentManager(InvestmentManager investmentManager);
+        bool Save();
     }
 }
