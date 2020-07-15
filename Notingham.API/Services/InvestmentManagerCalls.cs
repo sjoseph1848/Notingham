@@ -33,9 +33,9 @@ namespace Notingham.API.Services
 
             string jsonString = await response.Content.ReadAsStringAsync();
 
-            InvestmentManagerJsonDto investmentManagerJsonDto = JsonConvert.DeserializeObject<InvestmentManagerJsonDto>(jsonString);
+            InvestmentManagerJsonDto[] investmentManagerJsonDto = JsonConvert.DeserializeObject<InvestmentManagerJsonDto[]>(jsonString);
 
-            return investmentManagerJsonDto;
+            return investmentManagerJsonDto[0];
         }
     }
 }

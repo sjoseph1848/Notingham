@@ -31,14 +31,19 @@ namespace Notingham.API.Controllers
         }
 
         [HttpGet("", Name ="GetInvestmentManager")]
+        public IActionResult GetInvestmentManager(Guid investmentManagerId)
+        {
+            return Ok();
+        }
+
 
         [HttpPost]
-        public async Task<ActionResult<InvestmentManagerDto>> CreateInvestmentManagerAsync(string investmentManager)
+        public async Task<ActionResult<InvestmentManagerDto>> CreateInvestmentManagerAsync(InvestmentManagerForCreationDto investmentManager)
         {
             
             var investment = new InvestmentManagerCalls(_clientFactory, _config);
 
-           var investmentManagerJson = await investment.GetInvestmentManager(investmentManager);
+           var investmentManagerJson = await investment.GetInvestmentManager(investmentManager.Cik);
 
             var investmentManagerEntity = _mapper.Map<Entities.InvestmentManager>(investmentManagerJson);
             _investmentManagerRepository.AddInvestmentManager(investmentManagerEntity);
