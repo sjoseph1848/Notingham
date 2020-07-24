@@ -44,8 +44,9 @@ namespace Notingham.API.Controllers
             var investment = new InvestmentManagerCalls(_clientFactory, _config);
 
            var investmentManagerJson = await investment.GetInvestmentManager(investmentManager.Cik);
-
-            var investmentManagerEntity = _mapper.Map<Entities.InvestmentManager>(investmentManagerJson);
+            investmentManager.Name = investmentManagerJson.Name;
+            // Continue from here. 
+            var investmentManagerEntity = _mapper.Map<Entities.InvestmentManager>(investmentManager);
             _investmentManagerRepository.AddInvestmentManager(investmentManagerEntity);
             _investmentManagerRepository.Save();
 

@@ -43,7 +43,11 @@ namespace RobinTrack
                 foreach(var blob in tableBlobs)
                 {
                     var clean = Regex.Replace(blob.InnerText, pattern, " ");
-                    Console.WriteLine(clean); 
+                    var cleaner = Regex.Replace(clean, @"[\d-]", string.Empty).Trim(' ');
+                    RegexOptions options = RegexOptions.None;
+                    Regex regex = new Regex("[ ]{2,}", options);
+                    var cleanest = regex.Replace(cleaner, " ");
+                    Console.WriteLine(cleanest); 
                 }
 
             }

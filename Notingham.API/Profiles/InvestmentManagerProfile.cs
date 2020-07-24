@@ -10,7 +10,9 @@ namespace Notingham.API.Profiles
     {
         public InvestmentManagerProfile()
         {
+            CreateMap<Entities.InvestmentManager, Models.InvestmentManagerDto>();
             CreateMap<Models.InvestmentManagerForCreationDto, Entities.InvestmentManager>();
+
         }
     }
 }
